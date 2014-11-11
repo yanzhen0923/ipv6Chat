@@ -25,6 +25,11 @@ namespace ipv6Server
             accountList = new Dictionary<string, string>();
             serviceList = new Dictionary<string, Socket>();
             dataBuff = new byte[MAXBUFF];
+            if (!File.Exists("users"))
+            {
+                File.Create("users").Close();
+            }
+
             string[] users = File.ReadAllLines("users");
             foreach (string account in users)
             {
